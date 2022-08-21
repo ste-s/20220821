@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Tudo em Todo Lugar ao Mesmo Tempo</title>
+    <style>
+        body
+        {
+            background-color: black;
+            margin: auto;
+            text-align: center;
+        }
+        img
+        {
+            float: left;
+            margin-left: 100px;
+            height: 695px;
+            width: 400px;
+        }
+        iframe
+        {
+            margin-top: 0px;
+        }
+        .avaliacao
+        {
+            display: flex;
+            float: right;
+            margin-right: 425px;
+            margin-top: 150px;
+        }
+        .star-icon{
+            list-style-type: none;
+            border: 1px solid #000;
+            cursor: pointer;
+            color: silver;
+            font-size: 40px;
+        }
+        .star-icon::before
+        {
+            content: "\2605";
+        }
+        .star-icon.ativo ~ .star-icon::before
+        {
+            content: "\2606";
+        }
+        .avaliacao:hover .star-icon::before
+        {
+            content: "\2605";
+        }
+        .star-icon:hover ~ .star-icon::before
+        {
+            content: "\2606";
+        }
+    </style>
+</head>
+    <img src="teste.jpg" alt="aaa">
+    <ul class="avaliacao">
+        <li class="star-icon ativo" data-avaliacao="1"></li>
+        <li class="star-icon" data-avaliacao="2"></li>
+        <li class="star-icon" data-avaliacao="3"></li>
+        <li class="star-icon" data-avaliacao="4"></li>
+        <li class="star-icon" data-avaliacao="5"></li>
+      </ul>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/wxN1T1uxQ2g?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <script>
+        var stars = document.querySelectorAll('.star-icon');
+                  
+                  document.addEventListener('click', function(e){
+                    var classStar = e.target.classList;
+                    if(!classStar.contains('ativo')){
+                      stars.forEach(function(star){
+                        star.classList.remove('ativo');
+                      });
+                      classStar.add('ativo');
+                      console.log(e.target.getAttribute('data-avaliacao'));
+                    }
+                  });
+    </script>
+</body>
+</html>
